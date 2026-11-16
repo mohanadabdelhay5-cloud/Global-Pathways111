@@ -494,3 +494,21 @@ h3,.num,.mq__in,.yr .num,.manifesto,.bigwords,.bigmail,.veil b,.sheet nav a{font
 .person--ph>div{padding-inline:8px}
 .ph{width:100%;height:auto;aspect-ratio:1/1.04;object-fit:cover;object-position:50% 22%;border-radius:999px 999px 6px 6px;background:var(--mist);display:block;filter:saturate(.92)}
 .person--ph:hover{transform:translateY(-6px);box-shadow:inset 0 0 0 1px var(--gold),0 30px 50px -36px rgba(20,41,31,.45)}
+
+/* ================= v9: the family bar, shared by every Global Pathways site ================= */
+.eco{background:var(--ever);color:#EDE6D2;font-size:.76rem}
+.eco__in{display:flex;justify-content:space-between;align-items:center;gap:16px;height:34px}
+.eco span{letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.7;white-space:nowrap}
+.eco nav{display:flex;gap:clamp(12px,2vw,26px);white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+.eco nav::-webkit-scrollbar{display:none}
+.eco a{opacity:.72;transition:opacity .25s;padding:6px 0}
+.eco a:hover{opacity:1}
+.eco a.is-here{opacity:1;box-shadow:inset 0 -2px 0 #DCC27E}
+@media (max-width:720px){.eco span{display:none}}
+.enter{padding-top:144px}
+.hero{padding-top:clamp(180px,22vh,240px)}
+.hero--home{padding-top:0}
+.hero__art{top:118px}
+.sheet{padding-top:134px}
+@media (max-width:899px){.enter{padding-top:150px}}
+.hero--home .d1{font-size:clamp(2.9rem,6.3vw,6.2rem)}

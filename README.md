@@ -17,6 +17,8 @@ Open `index.html` in a browser, or serve the folder with any static server.
 - `index.html` — all eight pages (Home, About, Academy, GPBible, Immersion, Task Force, Give, Contact), switched by hash routes such as `#about`
 - `styles.css` — design tokens and layout
 - `app.js` — routing, page transitions, scroll animation
+- `academy/` — the Global Pathways Academy site (seven pages), sharing `styles.css` and `vendor/` with the main site
+- `img/` — board and team portraits
 - `vendor/` — GSAP 3.15.1 (core, ScrollTrigger, SplitText), used under the GSAP standard license: https://gsap.com/standard-license
 
 ## Notes

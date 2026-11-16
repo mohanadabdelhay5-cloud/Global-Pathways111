@@ -18,6 +18,7 @@ Open `index.html` in a browser, or serve the folder with any static server.
 - `styles.css` — design tokens and layout
 - `app.js` — routing, page transitions, scroll animation
 - `academy/` — the Global Pathways Academy site (seven pages), sharing `styles.css` and `vendor/` with the main site
+- `immersion/` — the GP Immersion site (seven pages), sharing the same styles and scripts
 - `img/` — board and team portraits
 - `vendor/` — GSAP 3.15.1 (core, ScrollTrigger, SplitText), used under the GSAP standard license: https://gsap.com/standard-license
 

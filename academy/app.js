@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-var ROUTES=['home','families','schools','courses','formation','about','apply'];
+var ROUTES=['home','families','schools','courses','formation','about','faith','apply','contact','policies'];
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var hasG=!!window.gsap&&!reduce;
 var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
@@ -23,6 +23,20 @@ function tabs(btnSel,panSel,key){$$(btnSel).forEach(function(b){b.addEventListen
 })})}
 tabs('.triv__tab','.triv__pan','s'); tabs('.tbtn','.tpan','t');
 
+/* contact: build the email from the form and address it to the right team; the visitor sends it */
+var cform=$('#cform');
+if(cform){
+  var TO={'Family':'admissions@gp.academy','School / Administrator':'partnerships@gp.academy','Other':'info@gp.academy'}, csend=$('#csend'), cprev=$('#cprev'), cto=$('#cto'), ccopy=$('#ccopy');
+  var csync=function(){
+    var to=TO[$('#c-role').value]||'info@gp.academy', lines=[];
+    $$('[data-k]',cform).forEach(function(i){var v=i.value.replace(/[ \t]+/g,' ').trim(); if(v) lines.push(i.dataset.k+': '+v)});
+    var text=lines.join('\n'); cprev.textContent=text; cto.textContent=to;
+    csend.href='mailto:'+to+'?subject='+encodeURIComponent('Inquiry from the Academy website')+'&body='+encodeURIComponent(text);
+  };
+  cform.addEventListener('input',csync); cform.addEventListener('change',csync); cform.addEventListener('submit',function(e){e.preventDefault()}); csync();
+  ccopy.addEventListener('click',function(){var ok=function(){ccopy.textContent='Copied'},no=function(){var r=document.createRange();r.selectNodeContents(cprev);var s=getSelection();s.removeAllRanges();s.addRange(r);ccopy.textContent='Selected. Press Ctrl/⌘+C'};try{navigator.clipboard.writeText(cprev.textContent).then(ok,no)}catch(err){no()}});
+}
+
 function initView(el,intro){
   if(!hasG) return;
   ctx=gsap.context(function(){
@@ -37,7 +51,7 @@ function initView(el,intro){
       parts.forEach(function(p){ if(p.tagName==='circle'&&p.getAttribute('fill')==='#C9A24B') gsap.to(p,{y:-10,duration:3,ease:'sine.inOut',yoyo:true,repeat:-1,delay:d+2}) });
       gsap.to(fig,{yPercent:-10,ease:'none',scrollTrigger:{trigger:fig.parentNode,start:'top top',end:'bottom top',scrub:true}});
     });
-    var items=$$('.blk .head,.blk .row,.blk .cards,.blk .panel,.blk .band,.blk .facts,.blk .acc,.blk .stats,.blk .way,.blk .filter,.blk .courses,.blk .chips,.blk .triv,.blk .traits,.blk .roster,.blk .sub,.blk .mails,.blk .bigwords',el);
+    var items=$$('.blk .head,.blk .row,.blk .cards,.blk .panel,.blk .band,.blk .facts,.blk .acc,.blk .stats,.blk .way,.blk .filter,.blk .courses,.blk .chips,.blk .triv,.blk .traits,.blk .roster,.blk .sub,.blk .mails,.blk .bigwords,.blk .ticks',el);
     gsap.set(items,{autoAlpha:0,y:38});
     ScrollTrigger.batch(items,{start:'top 92%',once:true,onEnter:function(b){gsap.to(b,{autoAlpha:1,y:0,duration:1,ease:'power3.out',stagger:.08,overwrite:true})}});
     $$('[data-words]',el).forEach(function(p){ if(!window.SplitText) return; var s=SplitText.create(p,{type:'words',wordsClass:'w'}); gsap.to(s.words,{opacity:1,ease:'none',stagger:.08,scrollTrigger:{trigger:p,start:'top 86%',end:'bottom 58%',scrub:.6}}) });
@@ -77,7 +91,7 @@ function closeMenu(){ if(body.classList.contains('menu-open')){body.classList.re
 $('#burger').addEventListener('click',function(){var o=body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o?'true':'false')});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-go]'); if(a){e.preventDefault();go(a.dataset.go)}});
 window.addEventListener('hashchange',function(){var n=location.hash.replace('#','')||'home'; if(n!==current) go(n)});
-document.addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT')return;if(e.key>='0'&&e.key<='6')go(ROUTES[+e.key])});
+document.addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT')return;if(e.key>='0'&&e.key<='9')go(ROUTES[+e.key])});
 var prog=$('#prog'),badge=$('#badge'),bgp=reduce?null:$('#bgp');
 badge.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
 window.addEventListener('scroll',function(){

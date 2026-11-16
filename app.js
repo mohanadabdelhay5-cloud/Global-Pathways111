@@ -70,6 +70,33 @@ function startCanvas(cv){
   return function(){cancelAnimationFrame(raf);window.removeEventListener('pointermove',onMove);window.removeEventListener('resize',onSize)};
 }
 
+/* ---------------- hero art: copy each symbol inline so its shapes can be animated ---------------- */
+$$('.hero__art svg.art').forEach(function(svg){
+  var u=svg.querySelector('use'); if(!u) return; var sym=document.querySelector(u.getAttribute('href')); if(!sym) return;
+  svg.removeChild(u); Array.prototype.forEach.call(sym.childNodes,function(n){svg.appendChild(n.cloneNode(true))});
+});
+/* ---------------- time of day: the light in the door follows the visitor's clock ---------------- */
+(function(){
+  var hr=new Date().getHours(), g=hr<5?'Good evening.':hr<12?'Good morning.':hr<18?'Good afternoon.':'Good evening.';
+  var L=hr>=5&&hr<11?['#FFFBE8','#F7E3A4','#FFF4D2']:hr>=11&&hr<17?['#FFFDF2','#FBEDB4','#FFF6DA']:hr>=17&&hr<21?['#FFEFC4','#F0BC62','#FFE9BE']:['#F6EED6','#DCC58A','#F5ECD2'];
+  var gr=document.getElementById('greet'); if(gr) gr.textContent=g;
+  var st=document.querySelectorAll('#doorlight stop'); if(st.length===2){st[0].setAttribute('stop-color',L[0]);st[1].setAttribute('stop-color',L[1])}
+  document.documentElement.style.setProperty('--light',L[2]);
+})();
+/* ---------------- clocks ---------------- */
+function tick(){
+  $$('[data-tz]').forEach(function(b){try{var o={hour:'numeric',minute:'2-digit'}; if(b.dataset.tz) o.timeZone=b.dataset.tz; b.textContent=new Intl.DateTimeFormat('en-US',o).format(new Date())}catch(e){b.textContent=''}});
+}
+tick(); setInterval(tick,20000);
+/* ---------------- pathway finder ---------------- */
+var who=$('#who'), whoOut=$('#whoOut'), doorsEl=$('.doors');
+var NAMES={academy:'Global Pathways Academy',bible:'GPBible','immersion':'GP Immersion','task-force':'the Education Task Force',give:'the giving page'};
+if(who) who.addEventListener('change',function(){
+  var v=who.value; $$('.door',doorsEl).forEach(function(d){d.classList.toggle('is-open',d.dataset.go===v)});
+  doorsEl.classList.toggle('has-pick',!!v&&v!=='give');
+  whoOut.innerHTML=v?('Your door is '+NAMES[v]+'. <a href="#'+v+'" data-go="'+v+'">Step in</a>'):'';
+});
+
 /* ---------------- per-view setup ---------------- */
 function initView(el,intro){
   var cv=$('.orbits',el); if(stopCanvas){stopCanvas();stopCanvas=null} if(cv) stopCanvas=startCanvas(cv);
@@ -107,9 +134,10 @@ function initView(el,intro){
       gsap.to(o,{v:to,duration:1.8,ease:'power2.out',scrollTrigger:{trigger:n,start:'top 92%',once:true},onUpdate:function(){n.textContent=Math.round(o.v)+suf}});
     });
     $$('.hero__art',el).forEach(function(fig){
-      var im=fig.firstElementChild;
-      gsap.from(fig,{autoAlpha:0,scale:.93,y:30,duration:1.6,ease:'power3.out',delay:d+.1});
-      gsap.to(im,{y:-16,duration:3.4,ease:'sine.inOut',yoyo:true,repeat:-1});
+      var im=fig.firstElementChild, parts=$$('g > *',im).slice(1);
+      gsap.from(fig,{autoAlpha:0,y:30,duration:1.1,ease:'power3.out',delay:d+.1});
+      gsap.from(parts,{y:70,scale:.5,autoAlpha:0,transformOrigin:'50% 100%',duration:1,ease:'back.out(1.5)',stagger:.1,delay:d+.45});
+      parts.forEach(function(p){ if(p.tagName==='circle'&&p.getAttribute('fill')==='#C9A24B') gsap.to(p,{y:-10,duration:3,ease:'sine.inOut',yoyo:true,repeat:-1,delay:d+2}); });
       gsap.to(fig,{yPercent:-12,ease:'none',scrollTrigger:{trigger:fig.parentNode,start:'top top',end:'bottom top',scrub:true}});
     });
     $$('[data-enter]',el).forEach(function(sec){
@@ -118,12 +146,13 @@ function initView(el,intro){
       var mm=gsap.matchMedia();
       mm.add('(min-width: 900px)',function(){
         var dx=0,dy=0;
-        function measure(){gsap.set(im,{x:0,y:0,scale:1});var r=im.getBoundingClientRect(),s=stage.getBoundingClientRect();dx=s.left+s.width/2-(r.left+r.width*.3425);dy=s.top+s.height*.48-(r.top+r.height*.48)}
+        function measure(){gsap.set(im,{x:0,y:0,scale:1});var r=im.getBoundingClientRect(),s=stage.getBoundingClientRect();dx=s.left+s.width/2-(r.left+r.width*.48);dy=s.top+s.height*.48-(r.top+r.height*.48)}
         measure();
         gsap.timeline({scrollTrigger:{trigger:sec,pin:stage,start:'top top',end:'+=150%',scrub:.7,invalidateOnRefresh:true,onRefreshInit:measure}})
-          .to(text,{autoAlpha:0,y:-70,duration:.28,ease:'power1.in'},0)
-          .to(im,{x:function(){return dx},y:function(){return dy},scale:11,duration:1,ease:'power2.in'},.04)
-          .to(light,{autoAlpha:1,duration:.34,ease:'none'},.66);
+          .to($('.leafg',im),{scaleX:.1,svgOrigin:'316 300',duration:.34,ease:'power2.inOut'},0)
+          .to(text,{autoAlpha:0,y:-70,duration:.28,ease:'power1.in'},.1)
+          .to(im,{x:function(){return dx},y:function(){return dy},scale:11,duration:.86,ease:'power2.in'},.2)
+          .to(light,{autoAlpha:1,duration:.3,ease:'none'},.74);
       });
     });
     $$('[data-story]',el).forEach(function(st){
@@ -156,7 +185,9 @@ function go(name){
   if(!hasG){ show(name,false); return; }
   busy=true;
   var el=$('.view[data-view="'+name+'"]'), idx=ROUTES.indexOf(name);
-  $('#veilName').textContent=el.dataset.title; $('#veilNo').textContent=idx?('0'+idx):'Foundation';
+  $('#veilName').textContent=el.dataset.title;
+  var art={about:'about',academy:'academy',bible:'bible',immersion:'immersion','task-force':'taskforce',give:'give',contact:'contact'}[name], vs=$('#veilSvg');
+  $('#veilUse').setAttribute('href',art?'#art-'+art:'#gp-mark'); vs.setAttribute('viewBox',art?'0 0 400 520':'0 0 560 530'); vs.classList.toggle('is-art',!!art); $('#veilNo').textContent=idx?('0'+idx):'Foundation';
   var A='inset(100% 0% 0% 0% round 50vw 50vw 0vw 0vw)', B='inset(0% 0% 0% 0% round 0vw 0vw 0vw 0vw)', C='inset(0% 0% 100% 0% round 0vw 0vw 0vw 0vw)';
   gsap.timeline({onComplete:function(){busy=false}})
     .set(veil,{visibility:'visible',clipPath:A})

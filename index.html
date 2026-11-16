@@ -26,29 +26,20 @@
     </nav>
     <div class="hdr__cta">
       <a class="btn btn--ink" href="#give" data-go="give">Give <i></i></a>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Open all doors" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 
 <div class="sheet" id="sheet">
-  <nav aria-label="Menu">
-    <a href="#home" data-go="home"><small>00</small>Home</a>
-    <a href="#about" data-go="about"><small>01</small>About</a>
-    <a href="#academy" data-go="academy"><small>02</small>Academy</a>
-    <a href="#bible" data-go="bible"><small>03</small>GPBible</a>
-    <a href="#immersion" data-go="immersion"><small>04</small>Immersion</a>
-    <a href="#task-force" data-go="task-force"><small>05</small>Task Force</a>
-    <a href="#give" data-go="give"><small>06</small>Give</a>
-    <a href="#contact" data-go="contact"><small>07</small>Contact</a>
-  </nav>
-  <p>Global Pathways Foundation · 501(c)(3) · hello@globalpathways.org</p>
+  <div class="hall__head"><p class="eyebrow">All doors</p><a class="link" href="#home" data-go="home">Back to the entrance</a></div>
+  <nav class="hall" aria-label="All pages"><a class="hall__door" href="#about" data-go="about" style="--i:0"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-about"/></svg><span><small>01</small>About</span></a><a class="hall__door" href="#academy" data-go="academy" style="--i:1"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-academy"/></svg><span><small>02</small>Academy</span></a><a class="hall__door" href="#bible" data-go="bible" style="--i:2"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-bible"/></svg><span><small>03</small>GPBible</span></a><a class="hall__door" href="#immersion" data-go="immersion" style="--i:3"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-immersion"/></svg><span><small>04</small>Immersion</span></a><a class="hall__door" href="#task-force" data-go="task-force" style="--i:4"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-taskforce"/></svg><span><small>05</small>Task Force</span></a><a class="hall__door" href="#give" data-go="give" style="--i:5"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-give"/></svg><span><small>06</small>Give</span></a><a class="hall__door" href="#contact" data-go="contact" style="--i:6"><svg viewBox="0 0 400 520" aria-hidden="true"><use href="#art-contact"/></svg><span><small>07</small>Contact</span></a></nav>
+  <p class="hall__foot">Global Pathways Foundation · 501(c)(3) · hello@globalpathways.org</p>
 </div>
 
-<div class="veil" id="veil" aria-hidden="true"><div class="veil__in"><svg viewBox="0 0 560 530"><use href="#gp-mark"/></svg><small id="veilNo">Foundation</small><b id="veilName">Global Pathways</b></div></div>
+<div class="veil" id="veil" aria-hidden="true"><div class="veil__in"><svg id="veilSvg" viewBox="0 0 560 530"><use id="veilUse" href="#gp-mark"/></svg><small id="veilNo">Foundation</small><b id="veilName">Global Pathways</b></div></div>
 
 <div class="cur" id="cur" aria-hidden="true"><span></span></div>
-<div class="glow" id="glow" aria-hidden="true"></div>
 <button class="badge" id="badge" aria-label="Back to top"><svg class="badge__ring" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27"/><circle class="p" id="prog" cx="30" cy="30" r="27"/></svg><svg class="badge__mk" viewBox="0 0 560 530"><use href="#gp-mark"/></svg></button>
 <main id="main">
 
@@ -65,15 +56,13 @@
             <button class="btn btn--ink" data-scroll="#doors">Choose a pathway <i></i></button>
             <a class="btn btn--line" href="#about" data-go="about">Who we are</a>
           </div>
-          <p class="hint" data-rise><span></span>Keep scrolling to step inside</p>
+          <p class="hint" data-rise><span></span><b id="greet">Welcome.</b>&nbsp;Keep scrolling to step inside</p>
         </div>
         <figure class="enter__art"><svg class="doorart" viewBox="0 0 400 620" role="img" aria-label="An arched green door standing half open with warm light inside">
 <ellipse cx="200" cy="522" rx="190" ry="12" fill="rgba(20,41,31,.08)"/>
 <path d="M60 520V160A140 140 0 0 1 340 160V520Z" fill="var(--ever)"/>
 <path d="M84 520V160A116 116 0 0 1 316 160V520Z" fill="url(#doorlight)"/>
-<path d="M190 520V44.4A116 116 0 0 1 316 160V520Z" fill="#93A688"/>
-<path d="M190 520V44.4" stroke="#C9A24B" stroke-width="2.5"/>
-<circle cx="214" cy="300" r="9" fill="#C9A24B"/>
+<g class="leafg"><path d="M190 520V44.4A116 116 0 0 1 316 160V520Z" fill="#93A688"/><path d="M190 520V44.4" stroke="#C9A24B" stroke-width="2.5"/><circle cx="214" cy="300" r="9" fill="#C9A24B"/></g>
 <path d="M84 520L190 520L150 560L20 560Z" fill="#FFF1C9" opacity=".7"/>
 <rect x="34" y="470" width="5" height="50" fill="var(--ever)"/>
 <path d="M36.500 482C16 482 4 466 2 446C24 448 36.500 462 36.500 482Z" fill="var(--leaf)"/>
@@ -102,13 +91,22 @@
     </div>
   </section>
 
-  <div class="mq" aria-hidden="true"><div class="mq__in"><span>Academy</span><i></i><span>GPBible</span><i></i><span>Immersion</span><i></i><span>Task Force</span><i></i><span>Academy</span><i></i><span>GPBible</span><i></i><span>Immersion</span><i></i><span>Task Force</span><i></i><span>Academy</span><i></i><span>GPBible</span><i></i><span>Immersion</span><i></i><span>Task Force</span><i></i><span>Academy</span><i></i><span>GPBible</span><i></i><span>Immersion</span><i></i><span>Task Force</span><i></i></div></div>
-
   <section class="blk" id="doors">
     <div class="wrap">
       <div class="head">
         <h2 class="d2">Four doors.<br><em>One house.</em></h2>
-        <p class="lede">Each part of Global Pathways stands on its own and leads back to the same mission. Open the one that fits where you are.</p>
+        <div class="finder">
+          <label for="who">Not sure which door is yours? Tell us who is at the door.</label>
+          <p class="finder__line">I am <select id="who">
+            <option value="">choose one</option>
+            <option value="academy">a student or parent seeking a school</option>
+            <option value="bible">looking to read Scripture daily</option>
+            <option value="immersion">planning a group or family trip</option>
+            <option value="task-force">an educator or pastor ready to serve</option>
+            <option value="give">ready to give</option>
+          </select></p>
+          <p class="finder__out" id="whoOut" aria-live="polite"></p>
+        </div>
       </div>
       <div class="doors">
         <a class="door" href="#academy" data-go="academy">
@@ -537,6 +535,15 @@
       <div><h4>Pathways</h4><ul><li><a href="#academy" data-go="academy">Academy</a></li><li><a href="#bible" data-go="bible">GPBible</a></li><li><a href="#immersion" data-go="immersion">Immersion</a></li><li><a href="#task-force" data-go="task-force">Task Force</a></li></ul></div>
       <div><h4>Foundation</h4><ul><li><a href="#about" data-go="about">About</a></li><li><a href="#give" data-go="give">Give</a></li><li><a href="#contact" data-go="contact">Contact</a></li><li><a href="https://globalpathways.org/financial-statements" target="_blank" rel="noopener">Financial statements</a></li></ul></div>
       <div><h4>More</h4><ul><li><a href="https://globalpathways.org/blog" target="_blank" rel="noopener">Blog</a></li><li><a href="https://store.globalpathways.org/" target="_blank" rel="noopener">Store</a></li><li><a href="https://globalpathways.org/statement-of-faith" target="_blank" rel="noopener">Statement of Faith</a></li></ul></div>
+    </div>
+    <div class="now" aria-label="Local time where the work happens">
+      <p class="eyebrow">Right now</p>
+      <div class="now__grid">
+        <div><b class="num" data-tz="America/New_York">--:--</b><span>Ellington, Connecticut<small>The Foundation's home</small></span></div>
+        <div><b class="num" data-tz="America/Chicago">--:--</b><span>Nashville, Tennessee<small>Operations</small></span></div>
+        <div><b class="num" data-tz="America/Costa_Rica">--:--</b><span>Manuel Antonio, Costa Rica<small>GP Immersion</small></span></div>
+        <div><b class="num" data-tz="">--:--</b><span>Where you are<small>The next student could be here</small></span></div>
+      </div>
     </div>
     <div class="ftr__big" aria-hidden="true">Global Pathways</div>
     <div class="ftr__bot"><span>© 2026 Global Pathways Foundation</span><span class="keys">Press 1 to 7 to walk through a door</span><nav aria-label="Legal"><a href="https://globalpathways.org/terms-of-service" target="_blank" rel="noopener">Terms</a><a href="https://globalpathways.org/privacy-policy" target="_blank" rel="noopener">Privacy</a><a href="https://globalpathways.org/refund-policy" target="_blank" rel="noopener">Refunds</a></nav></div>

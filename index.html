@@ -46,7 +46,7 @@
 
 <!-- ===================== HOME ===================== -->
 <article class="view is-active" data-view="home" data-title="Home">
-  <section class="hero hero--home" data-enter>
+  <section class="hero hero--home">
     <div class="enter">
       <div class="wrap enter__grid">
         <div class="enter__text">
@@ -57,25 +57,26 @@
             <button class="btn btn--ink" data-scroll="#doors">Choose a pathway <i></i></button>
             <a class="btn btn--line" href="#about" data-go="about">Who we are</a>
           </div>
-          <p class="hint" data-rise><span></span><b id="greet">Welcome.</b>&nbsp;Keep scrolling to step inside</p>
+          <p class="hint" data-rise><span></span><b id="greet">Welcome.</b>&nbsp;Three pathways, one place where they meet.</p>
         </div>
-        <figure class="enter__art"><svg class="doorart" viewBox="0 0 400 620" role="img" aria-label="An arched green door standing half open with warm light inside">
-<ellipse cx="200" cy="522" rx="190" ry="12" fill="rgba(20,41,31,.08)"/>
-<path d="M60 520V160A140 140 0 0 1 340 160V520Z" fill="var(--ever)"/>
-<path d="M84 520V160A116 116 0 0 1 316 160V520Z" fill="url(#doorlight)"/>
-<g class="leafg"><path d="M190 520V44.4A116 116 0 0 1 316 160V520Z" fill="#93A688"/><path d="M190 520V44.4" stroke="#C9A24B" stroke-width="2.5"/><circle cx="214" cy="300" r="9" fill="#C9A24B"/></g>
-<path d="M84 520L190 520L150 560L20 560Z" fill="#FFF1C9" opacity=".7"/>
-<rect x="34" y="470" width="5" height="50" fill="var(--ever)"/>
-<path d="M36.500 482C16 482 4 466 2 446C24 448 36.500 462 36.500 482Z" fill="var(--leaf)"/>
-<path d="M36.500 482C57 482 69 466 71 446C49 448 36.500 462 36.500 482Z" fill="#93A688"/>
-<ellipse cx="132" cy="566" rx="44" ry="9" fill="#E5DBBF"/><ellipse cx="92" cy="592" rx="56" ry="11" fill="#E5DBBF"/>
+        <figure class="enter__art" data-emblem><svg class="emblem" viewBox="0 0 480 520" role="img" aria-label="Three pathways crossing a globe and meeting at its centre, where a sprout with two leaves grows">
+<defs><clipPath id="globeclip"><circle cx="240" cy="300" r="200"/></clipPath></defs>
+<circle class="e-sun" cx="408" cy="62" r="26" fill="#C9A24B"/>
+<circle class="e-globe" cx="240" cy="300" r="200" fill="var(--ever)"/>
+<g clip-path="url(#globeclip)" fill="none" stroke-width="36">
+<path class="e-road" d="M70 520C96 396 172 330 240 300" stroke="#93A688"/>
+<path class="e-road" d="M410 520C384 396 308 330 240 300" stroke="#C9A24B"/>
+<path class="e-road" d="M240 530V300" stroke="#EFE6CF"/>
+</g>
+<path class="e-stem" d="M240 300V196" fill="none" stroke="#EFE6CF" stroke-width="12" stroke-linecap="round"/>
+<path class="e-leaf" d="M240 214C182 214 144 170 140 110C200 114 240 156 240 214Z" fill="#B9C9AC"/>
+<path class="e-leaf" d="M240 214C298 214 336 170 340 110C280 114 240 156 240 214Z" fill="#EFE6CF"/>
 </svg></figure>
       </div>
-      <div class="enter__light" aria-hidden="true"></div>
     </div>
   </section>
 
-  <section class="blk blk--light">
+  <section class="blk">
     <div class="wrap split2">
       <p class="eyebrow">What we believe</p>
       <p class="manifesto wide" data-words>The highest goal a person can reach is connection: with themselves, with others, and with God. Everything we build serves that.</p>
@@ -510,7 +511,7 @@
     <div class="wrap cols">
       <div style="display:grid;gap:34px;align-content:start">
         <div><p class="eyebrow" style="margin-bottom:12px">By post</p><p style="font-size:1.2rem">Global Pathways Foundation<br>31b Frog Hollow Rd<br>Ellington, CT 06029</p></div>
-        <div><p class="eyebrow" style="margin-bottom:12px">Follow the work</p><div class="socs"><a class="soc" href="https://www.instagram.com/globalpathways_foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on Instagram"><b>Ig</b><span>Instagram</span></a><a class="soc" href="https://www.facebook.com/people/Global-Pathways-Foundation/61581169076790/" target="_blank" rel="noopener" aria-label="Global Pathways on Facebook"><b>Fb</b><span>Facebook</span></a><a class="soc" href="https://www.youtube.com/@globalpathwaysfoundation" target="_blank" rel="noopener" aria-label="Global Pathways on YouTube"><b>Yt</b><span>YouTube</span></a><a class="soc" href="https://www.linkedin.com/company/globalpathways-foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on LinkedIn"><b>In</b><span>LinkedIn</span></a></div></div>
+        <div><p class="eyebrow" style="margin-bottom:12px">Follow the work</p><div class="socs"><a class="soc" href="https://www.instagram.com/globalpathways_foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on Instagram"><b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6" fill="currentColor"/></svg></b><span>Instagram</span></a><a class="soc" href="https://www.facebook.com/people/Global-Pathways-Foundation/61581169076790/" target="_blank" rel="noopener" aria-label="Global Pathways on Facebook"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4.5h-1.8a3.6 3.6 0 0 0-3.6 3.6V20"/><path d="M6.8 12h7.4"/></svg></b><span>Facebook</span></a><a class="soc" href="https://www.youtube.com/@globalpathwaysfoundation" target="_blank" rel="noopener" aria-label="Global Pathways on YouTube"><b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3.6"/><path d="M10.2 9.4v5.2l4.6-2.6Z" fill="currentColor" stroke-linejoin="round"/></svg></b><span>YouTube</span></a><a class="soc" href="https://www.linkedin.com/company/globalpathways-foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on LinkedIn"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 10.5V19"/><circle cx="6.2" cy="6.4" r=".7" fill="currentColor"/><path d="M11 19v-8.5"/><path d="M11 14a3.4 3.4 0 0 1 6.8 0v5"/></svg></b><span>LinkedIn</span></a></div></div>
         <div><p class="eyebrow" style="margin-bottom:12px">Monthly letter</p><p class="muted" style="max-width:40ch">Once a month: news of the mission, prayer and impact.</p><a class="link" href="https://globalpathways.org/" target="_blank" rel="noopener" style="margin-top:12px">Subscribe on globalpathways.org</a></div>
       </div>
       <div class="panel">
@@ -536,7 +537,7 @@
         <a class="brand" href="#home" data-go="home"><svg><use href="#gp-mark"/></svg><span>Global Pathways</span></a>
         <p class="ftr__say">One mission. <em>Many pathways.</em></p>
         <p class="ftr__sub">A 501(c)(3) foundation cultivating kingdom education and spiritual formation across the globe.</p>
-        <div class="socs"><a class="soc" href="https://www.instagram.com/globalpathways_foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on Instagram"><b>Ig</b><span>Instagram</span></a><a class="soc" href="https://www.facebook.com/people/Global-Pathways-Foundation/61581169076790/" target="_blank" rel="noopener" aria-label="Global Pathways on Facebook"><b>Fb</b><span>Facebook</span></a><a class="soc" href="https://www.youtube.com/@globalpathwaysfoundation" target="_blank" rel="noopener" aria-label="Global Pathways on YouTube"><b>Yt</b><span>YouTube</span></a><a class="soc" href="https://www.linkedin.com/company/globalpathways-foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on LinkedIn"><b>In</b><span>LinkedIn</span></a></div>
+        <div class="socs"><a class="soc" href="https://www.instagram.com/globalpathways_foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on Instagram"><b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6" fill="currentColor"/></svg></b><span>Instagram</span></a><a class="soc" href="https://www.facebook.com/people/Global-Pathways-Foundation/61581169076790/" target="_blank" rel="noopener" aria-label="Global Pathways on Facebook"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4.5h-1.8a3.6 3.6 0 0 0-3.6 3.6V20"/><path d="M6.8 12h7.4"/></svg></b><span>Facebook</span></a><a class="soc" href="https://www.youtube.com/@globalpathwaysfoundation" target="_blank" rel="noopener" aria-label="Global Pathways on YouTube"><b><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3.6"/><path d="M10.2 9.4v5.2l4.6-2.6Z" fill="currentColor" stroke-linejoin="round"/></svg></b><span>YouTube</span></a><a class="soc" href="https://www.linkedin.com/company/globalpathways-foundation/" target="_blank" rel="noopener" aria-label="Global Pathways on LinkedIn"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 10.5V19"/><circle cx="6.2" cy="6.4" r=".7" fill="currentColor"/><path d="M11 19v-8.5"/><path d="M11 14a3.4 3.4 0 0 1 6.8 0v5"/></svg></b><span>LinkedIn</span></a></div>
       </div>
       <div><h4>Explore</h4><ul><li><a href="#about" data-go="about">About</a></li><li><a href="#task-force" data-go="task-force">Volunteer</a></li><li><a href="#give" data-go="give">Donate</a></li><li><a href="https://globalpathways.org/blog" target="_blank" rel="noopener">Blog</a></li><li><a href="#contact" data-go="contact">Contact</a></li></ul></div>
       <div><h4>Programs</h4><ul><li><a href="#academy" data-go="academy">Global Pathways Academy</a></li><li><a href="#bible" data-go="bible">GPBible App</a></li><li><a href="#immersion" data-go="immersion">GP Immersion</a></li></ul></div>

@@ -488,3 +488,9 @@ h3,.num,.mq__in,.yr .num,.manifesto,.bigwords,.bigmail,.veil b,.sheet nav a{font
 
 .enter__grid{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
 @media (max-width:899px){.enter__grid{grid-template-columns:1fr}}
+
+/* board and team portraits, framed as doors */
+.person--ph{padding:14px 14px 24px;gap:20px;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.person--ph>div{padding-inline:8px}
+.ph{width:100%;height:auto;aspect-ratio:1/1.04;object-fit:cover;object-position:50% 22%;border-radius:999px 999px 6px 6px;background:var(--mist);display:block;filter:saturate(.92)}
+.person--ph:hover{transform:translateY(-6px);box-shadow:inset 0 0 0 1px var(--gold),0 30px 50px -36px rgba(20,41,31,.45)}

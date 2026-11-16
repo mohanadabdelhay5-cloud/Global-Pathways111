@@ -212,14 +212,14 @@ document.addEventListener('click',function(e){
   if(s){var t=$(s.dataset.scroll); if(t){ if(lenis) lenis.scrollTo(t,{offset:-70,duration:1.4}); else t.scrollIntoView({behavior:reduce?'auto':'smooth'}); }}
 });
 window.addEventListener('hashchange',function(){var n=location.hash.replace('#','')||'home'; if(n!==current) go(n)});
-var prog=$('#prog'),badge=$('#badge');
+var prog=$('#prog'),badge=$('#badge');var bgp=reduce?null:$('#bgp');
 badge.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
 var glow=$('#glow');
 if(glow&&hasG&&matchMedia('(hover:hover) and (pointer:fine)').matches){var gx=gsap.quickTo(glow,'x',{duration:.9,ease:'power3'}),gy=gsap.quickTo(glow,'y',{duration:.9,ease:'power3'});window.addEventListener('pointermove',function(e){gx(e.clientX);gy(e.clientY)},{passive:true})}
 document.addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT')return;if(e.key>='0'&&e.key<='7')go(ROUTES[+e.key])});
 window.addEventListener('scroll',function(){
   var y=window.scrollY||document.documentElement.scrollTop, max=document.documentElement.scrollHeight-window.innerHeight;
-  hdr.classList.toggle('is-solid',y>24); var pr=max>0?Math.min(1,y/max):0;
+  hdr.classList.toggle('is-solid',y>24); if(bgp) bgp.style.transform='translate3d(0,'+(-((y*.07)%300))+'px,0)'; var pr=max>0?Math.min(1,y/max):0;
   if(prog){prog.style.strokeDashoffset=169.65*(1-pr); badge.classList.toggle('is-on',y>320); badge.querySelector('.badge__mk').style.transform='rotate('+(pr*360)+'deg)';}
 },{passive:true});
 if(cur&&hasG&&matchMedia('(hover:hover) and (pointer:fine)').matches){
@@ -229,7 +229,7 @@ if(cur&&hasG&&matchMedia('(hover:hover) and (pointer:fine)').matches){
 }
 
 /* ---------------- immersion days ---------------- */
-var DAYS=['Arrival & Orientation','History & Culture','Farm Immersion','Church & Health','Science & Adventure','Adventure, Science & Service','Leadership, Science & Adventure','Farm-to-Table','Service & Farewell','Departure'];
+var DAYS=['Arrival and Orientation','History and Culture','Farm Immersion','Church and Health','Science and Adventure','Adventure, Science and Service','Leadership, Science and Adventure','Farm-to-Table','Service and Farewell','Departure'];
 $$('[data-days]').forEach(function(w){
   var dial=$('.days__dial',w), out=$('.days__out',w), no=$('.num',out), h=$('h3',out);
   DAYS.forEach(function(name,i){

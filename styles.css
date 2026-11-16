@@ -432,3 +432,41 @@ h3,.num,.mq__in,.yr .num,.manifesto,.bigwords,.bigmail,.veil b,.sheet nav a{font
 .now__grid span{font-size:.92rem}
 .now__grid small{display:block;color:var(--ink-soft);font-size:.82rem}
 @media (max-width:760px){.now__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ================= v7: pattern of doors, socials, the last door ================= */
+.bgp{position:fixed;inset:-320px 0;z-index:0;pointer-events:none;will-change:transform;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='300'%3E%3Cpath d='M20 150V60A40 40 0 0 1 100 60V150Z' fill='%232E4A35' fill-opacity='.03'/%3E%3Cpath d='M140 300V210A40 40 0 0 1 220 210V300Z' fill='%232E4A35' fill-opacity='.03'/%3E%3Ccircle cx='180' cy='84' r='3.2' fill='%23B4913F' fill-opacity='.3'/%3E%3Ccircle cx='60' cy='234' r='3.2' fill='%23B4913F' fill-opacity='.3'/%3E%3C/svg%3E");
+  background-size:240px 300px}
+.hdr,.sheet,.veil,.badge,.cur{z-index:auto}
+.hdr{z-index:50}.sheet{z-index:40}.veil{z-index:90}.badge{z-index:45}.cur{z-index:95}
+
+.socs{display:flex;flex-wrap:wrap;gap:12px}
+.soc{display:grid;justify-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--ink-soft)}
+.soc b{width:54px;height:68px;border-radius:999px 999px 4px 4px;border:1px solid var(--gold);display:grid;place-items:center;padding-top:10px;font-family:var(--display);font-weight:400;font-style:italic;font-size:1.25rem;letter-spacing:0;color:var(--ink);transition:background .45s var(--ease),color .45s var(--ease),transform .45s var(--ease)}
+.soc:hover b,.soc:focus-visible b{background:var(--ink);color:var(--paper);transform:translateY(-6px)}
+.soc span{transition:color .3s}
+.soc:hover span{color:var(--ink)}
+
+.ftr--door{--ink:#F2EAD3;--ink-soft:rgba(242,234,211,.68);--line:rgba(242,234,211,.2);--leaf:#DCC27E;--paper:#27402E;
+  background:#27402E;color:var(--ink);border-top:0;margin-top:clamp(60px,8vw,120px);padding:clamp(90px,11vw,170px) 0 28px;
+  border-radius:50% 50% 0 0 / clamp(70px,9vw,150px) clamp(70px,9vw,150px) 0 0;position:relative;z-index:1}
+.ftr--door::before{content:"";position:absolute;inset:12px 12px 0 12px;border:1px solid rgba(208,174,90,.55);border-bottom:0;border-radius:inherit;pointer-events:none}
+.ftr--door .wrap{position:relative}
+.ftr--door .ftr__top{grid-template-columns:minmax(0,4.4fr) repeat(3,minmax(0,2fr)) minmax(0,3fr);gap:clamp(22px,3vw,48px)}
+.ftr--door .brand svg{fill:var(--ink)}
+.ftr--door .ftr__say{margin:20px 0 14px;max-width:none}
+.ftr__sub{font-size:.95rem;color:var(--ink-soft);max-width:34ch;margin-bottom:26px}
+.ftr--door h4{color:#DCC27E}
+.ftr--door ul a:hover{color:#DCC27E}
+.ftr__touch{display:grid;gap:14px;align-content:start;justify-items:start}
+.ftr__touch h4{margin-bottom:2px}
+.ftr__touch p{font-size:.95rem;color:var(--ink-soft)}
+.ftr__mail{font-size:.86rem!important;line-height:1.7}
+.btn--gold{background:#DCC27E;color:#1D3224}
+.btn--gold:hover{background:#F2EAD3}
+.ftr--door .soc b{color:var(--ink)}
+.ftr--door .soc:hover b{background:#F2EAD3;color:#1D3224}
+.ftr--door .ftr__big{-webkit-text-stroke:1px rgba(242,234,211,.34)}
+.ftr--door .ftr__big:hover{color:#F2EAD3}
+@media (max-width:1040px){.ftr--door .ftr__top{grid-template-columns:repeat(2,minmax(0,1fr))}.ftr--door .ftr__lead{grid-column:1/-1}}
+@media (max-width:560px){.ftr--door{border-radius:60px 60px 0 0}}
